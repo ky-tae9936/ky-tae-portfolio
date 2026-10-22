@@ -23,3 +23,6 @@ const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('
 
 
 readHash();
+
+document.querySelectorAll("[data-video]").forEach(b=>b.addEventListener("click",()=>{content.innerHTML=`<h2 id="dialog-title">레벨 디자인 플레이 영상</h2><div class="modal-video"><iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.video}?autoplay=1" title="레벨 디자인 플레이 영상" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;show()}));
+dialog.addEventListener("close",()=>{content.querySelectorAll("iframe").forEach(frame=>frame.remove())});

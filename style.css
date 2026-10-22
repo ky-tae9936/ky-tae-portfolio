@@ -25,3 +25,7 @@
 .overview-cover-link{cursor:pointer;transition:border-color .2s}.overview-cover-link:hover{border-color:var(--accent)}.overview-cover-link img{height:auto;object-fit:contain}
 
 .project-video{aspect-ratio:16/9;overflow:hidden;background:#000}.project-video iframe{display:block;width:100%;height:100%;border:0}
+
+.doc-links{display:flex;gap:10px;justify-content:flex-start;flex-wrap:wrap}.doc-links .btn{flex:0 0 auto;min-width:130px}.documents>.wide-doc{grid-column:1/-1;grid-row:1}
+
+.modal-video{aspect-ratio:16/9;width:100%}.modal-video iframe{width:100%;height:100%;border:0}
