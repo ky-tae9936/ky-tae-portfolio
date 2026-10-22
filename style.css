@@ -33,3 +33,5 @@
 .level-play-section{margin-top:55px;padding-top:40px;border-top:1px solid var(--line)}.level-play-section h3{font-size:28px}.level-play-section>p:not(.eyebrow){margin:10px 0 24px}.level-play-section .project-video{max-width:960px;margin:auto}.expand{display:none!important}
 
 .play-video-action{margin-top:16px}.play-video-action .btn{border-color:#475267;padding-inline:20px}
+
+.wide-doc .doc-links{flex-wrap:nowrap;gap:10px}.wide-doc .doc-links .btn{min-width:0;white-space:nowrap;padding-inline:18px}@media(max-width:480px){.wide-doc .doc-links{gap:6px}.wide-doc .doc-links .btn{flex:1;padding-inline:8px;font-size:10px}}
