@@ -26,3 +26,7 @@ readHash();
 
 document.querySelectorAll("[data-video]").forEach(b=>b.addEventListener("click",()=>{content.innerHTML=`<h2 id="dialog-title">레벨 디자인 플레이 영상</h2><div class="modal-video"><iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.video}?autoplay=1" title="레벨 디자인 플레이 영상" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;show()}));
 dialog.addEventListener("close",()=>{content.querySelectorAll("iframe").forEach(frame=>frame.remove())});
+
+// Start each visit at the hero; keep in-page navigation available afterward.
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+window.addEventListener('pageshow',()=>{if(dialog.open)dialog.close();history.replaceState(null,'',location.pathname+location.search);const root=document.documentElement;const old=root.style.scrollBehavior;root.style.scrollBehavior='auto';window.scrollTo(0,0);requestAnimationFrame(()=>{window.scrollTo(0,0);root.style.scrollBehavior=old;});});
