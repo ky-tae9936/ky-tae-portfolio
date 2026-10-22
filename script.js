@@ -1,0 +1,44 @@
+const dialog=document.getElementById('detail-dialog'),content=document.getElementById('dialog-content');
+const details={
+'flip-level':{title:'Flip — 레벨 기획',text:'스테이지의 진행 흐름과 오브젝트 배치, 구간별 난이도를 구성했습니다. 다양한 오브젝트를 단계적으로 배치하고 직접 플레이하며 레벨을 보완했습니다.',images:['flip-map.webp','flip-play.webp'],pdf:'overview'},
+'flip-content':{title:'Flip — 콘텐츠 기획',text:'레벨의 진행 방식과 난이도를 고려해 필요한 오브젝트의 동작 방식과 기믹을 구상했습니다. 콘셉트와 분위기에 적합한 이미지와 사운드를 조사했습니다.',images:['flip-play.webp','flip-map.webp'],pdf:'overview'},
+'flip-test':{title:'Flip — 테스트와 전시',text:'직접 플레이하며 장애물 배치와 난이도를 검토하고 보완했습니다. 2025 G-STAR에서 Flip을 전시하고 부스를 운영하며, 제작자가 의도한 방식과 관람객이 실제로 플레이하는 방식의 차이를 확인했습니다.',images:['flip-play.webp'],pdf:'overview'},
+learning:{title:'전투 학습 — 판단의 기초를 만드는 배치',text:'무기를 획득한 뒤 단일 적과 교전하며 공격과 회피 타이밍을 익힙니다. 이후 순찰 중인 적을 관찰하고 분리해 상대하도록 구성했습니다. 단계적으로 전투의 판단 요소를 확장하는 것이 설계 의도입니다.',images:['level-section.webp'],pdf:'level'},
+exploration:{title:'탐험과 동선 — 우회 선택의 가치',text:'메인 루트와 우회 공간을 함께 보여주고, NPC와 보상을 탐색 동기로 배치했습니다. 랜드마크로 다음 목표를 인지하게 하고, 전투 사이에 시야가 열리는 공간을 두어 흐름을 조절했습니다.',images:['level-map.webp','level-screen.webp'],pdf:'level'},
+pacing:{title:'전투의 완급 — 보스전까지의 흐름',text:'전투 학습 이후 탐험과 휴식 구간을 제공하고, 새로운 무기와 원거리 적으로 대응 방식을 확장합니다. 성 외부에서 전투 밀도를 높이고, 엘리트 몬스터를 거쳐 보스전으로 이어지도록 구성했습니다.',images:['level-map.webp','level-section.webp'],pdf:'level'},
+flip:{title:'Flip — 전환을 판단하는 플랫포머',text:'레벨 기획, 콘텐츠 기획과 에셋·사운드 리서치를 담당했습니다. 장애물을 단계적으로 배치하고 직접 플레이하며 난이도를 검토했습니다. 2025 G-STAR에서 관람객의 플레이를 관찰하고, 의도와 실제 플레이 방식의 차이를 돌아보았습니다.',images:['flip-play.webp','flip-map.webp'],pdf:'overview'},
+boss:{title:'유스티아 — 리스크와 리턴을 선택하는 전투',text:'실마엘 파편을 획득할수록 침식 스택이 증가하며 공격력은 높아지고 회복력은 낮아집니다. 정화 구역을 통해 스택을 제거하거나, 유지해 더 높은 효율을 노릴 수 있도록 구성했습니다. 숙련도와 상황에 따라 위험을 조절하는 경험을 목표로 한 개인 창작 기획입니다.',images:['boss-system.webp','boss-pattern.webp'],pdf:'boss'},
+monster:{title:'일반 몬스터 AI — 공통 구조와 데이터',text:'대기·추격·공격·복귀·상태이상·사망 상태를 FSM으로 구성했습니다. 몬스터별 설정 데이터를 참조하고, 타겟 선정·순찰·스킬 선정·피격 처리·효과 처리를 부가 연산으로 구분해 상태와 조건을 명확히 했습니다.',images:['ai-fsm.webp','ai-state.webp'],pdf:'ai'},
+level:{title:'액션 RPG — 전투와 탐험이 이어지는 공간',text:'지형과 적 배치를 파악하고 유리한 전투 상황을 만드는 경험을 중심에 두었습니다. 전투 학습, 탐험과 휴식, 전투 확장, 보스 구간으로 흐름을 구성하고 적과 아이템 배치를 구체화했습니다.',images:['level-map.webp','level-section.webp'],pdf:'level'},
+unreal:{title:'Unreal Engine — 아군·적군 AI 구현',text:'Behavior Tree와 Blackboard를 활용해 대기·추격·공격·복귀에 필요한 태스크를 제작하고, 변수에 따라 행동 상태가 바뀌도록 구성했습니다. 캐릭터와 스킬 정보는 데이터 테이블로 관리했습니다.',images:['ue-play.webp','ue-bt.webp'],pdf:'overview'},
+unity:{title:'Unity — 쿼터뷰 액션 기능 학습',text:'예제를 기반으로 캐릭터 이동과 점프, 공격, 무기 교체, 아이템 획득 등 기본 플레이 시스템을 구현했습니다. 플레이어·무기·아이템이 서로 연동되는 게임 로직을 학습한 작업입니다.',images:['unity-play.webp'],pdf:'overview'}
+};
+let opener=null;function show(){opener=document.activeElement;dialog.showModal();document.body.classList.add('modal-open');dialog.scrollTop=0}function renderDetail(key){const d=details[key];if(!d)return;content.innerHTML=`<p class="eyebrow">DESIGN PROCESS / KIM KYOUNG TAE</p><h2 id="dialog-title">${d.title}</h2><p>${d.text}</p>${d.images.map(im=>`<img src="${im}" alt="${d.title} 실제 작업 자료">`).join('')}<a class="btn primary" href="${d.pdf}.pdf" target="_blank" rel="noopener">PDF 원본 보기 ↗</a>`;if(!dialog.open)show();else dialog.scrollTop=0}
+document.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>{location.hash='work-'+b.dataset.detail}));
+function readHash(){if(location.hash.startsWith('#work-')){renderDetail(location.hash.slice(6));if(activeSkill)addSkillReturn()}else if(location.hash.startsWith('#skill-'))renderSkill(location.hash.slice(7));else if(dialog.open)dialog.close()}
+window.addEventListener('hashchange',readHash);
+document.querySelectorAll('[data-zoom]').forEach(b=>b.addEventListener('click',()=>{content.innerHTML=`<h2 id="dialog-title">작업 이미지 확대</h2><img src="${b.dataset.zoom}" alt="${b.querySelector('img').alt}">`;show()}));
+document.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');if(location.hash.startsWith('#work-')||location.hash.startsWith('#skill-'))history.replaceState(null,'',location.pathname+location.search);opener?.focus()});
+const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('nav');toggle.addEventListener('click',()=>{const state=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',state);toggle.setAttribute('aria-label',state?'메뉴 닫기':'메뉴 열기')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+
+let activeSkill=null;
+const skills={
+unreal:{title:'Unreal Engine',category:'게임 엔진',summary:'몬스터 AI의 행동과 데이터를 구성하고, 전투 공간을 직접 제작하며 엔진에서 동작을 확인합니다.',items:['Behavior Tree와 Blackboard로 대기·추격·공격·복귀 행동 구성','행동별 Task 제작과 Blackboard 변수에 따른 상태 전환','Data Table로 캐릭터 스탯과 스킬 정보 관리','Landscape·Foliage·모델링 도구와 에셋을 활용한 더미맵 제작'],works:[['unreal','아군·적군 AI 구현'],['blockout','더미맵과 전투 공간 제작']]},
+unity:{title:'Unity',category:'게임 엔진',summary:'쿼터뷰 액션 예제를 기반으로 기초 플레이 시스템과 오브젝트의 연결 구조를 학습했습니다.',items:['캐릭터 이동·점프·공격과 무기 교체 기능 구현','아이템 획득과 적 캐릭터의 상호작용 구성','스크립트로 플레이어·무기·아이템 간 동작 연결'],works:[['unity','쿼터뷰 액션 기능 구현']]},
+csharp:{title:'C#',category:'사용 언어',summary:'Unity 예제 기반 구현을 통해 게임 오브젝트가 서로 연동되는 기본 로직을 학습했습니다.',items:['이동과 전투 입력 등 기초 플레이 기능의 코드 흐름 학습','플레이어·무기·아이템 간 상호작용 구성'],works:[['unity','Unity 기능 구현 자료']]},
+cpp:{title:'C++',category:'사용 언어',summary:'사용 언어로 학습하고 있습니다.',items:[],works:[]},
+chatgpt:{title:'ChatGPT',category:'생성형 AI 도구',summary:'기획 자료 조사와 아이디어 구체화, 초안 검토 및 제작 보조에 활용하는 도구입니다.',items:['자료 조사와 기획 아이디어 구체화','규칙·수치와 문서 초안 검토','기획 의도에 맞춰 제안을 검토하고 수정'],works:[['ai-support','생성형 AI 활용 작업']]},
+claude:{title:'Claude',category:'생성형 AI 도구',summary:'기획과 제작 과정에서 활용하는 생성형 AI 도구입니다.',items:[],works:[]},
+max:{title:'3ds Max',category:'모델링 도구',summary:'그래픽과 협업에 대한 이해를 넓히기 위해 헬멧과 갑옷 모델링을 학습했습니다.',items:['헬멧과 갑옷 모델링 학습','레벨 제작과 그래픽 작업에 대한 이해 확장'],works:[['modeling','모델링과 더미맵 작업 자료']]},
+powerpoint:{title:'PowerPoint',category:'문서 제작 도구',summary:'전투·AI·레벨 기획을 읽기 쉬운 문서로 정리합니다.',items:['기획 의도와 시스템 구조를 페이지 단위로 정리','도표와 이미지를 활용해 동작·조건·흐름 설명'],works:[['boss','보스 몬스터 전투 기획'],['monster','일반 몬스터 AI 기획'],['level','액션 RPG 레벨 기획']]},
+word:{title:'Word',category:'문서 제작 도구',summary:'기획 내용을 문서로 정리할 때 사용하는 도구입니다.',items:[],works:[]},
+excel:{title:'Excel',category:'문서·데이터 도구',summary:'수치와 표 형태의 정보를 정리할 때 사용하는 도구입니다.',items:[],works:[]}
+};
+details.blockout={title:'더미맵과 전투 공간 제작',text:'언리얼 엔진의 모델링 도구, 랜드스케이프, 폴리지와 에셋으로 RPG 레벨의 더미맵을 제작했습니다. 전투 학습과 탐험, 보스 구간으로 이어지는 공간을 구성했습니다.',images:['level-screen.webp','hero-level.webp'],pdf:'level'};
+details.modeling={title:'3ds Max — 모델링 학습',text:'헬멧과 갑옷 모델링을 학습하고, 언리얼 엔진으로 더미맵을 제작했습니다. 그래픽과 공간 제작에 대한 이해를 넓히기 위한 작업입니다.',images:['modeling-work.webp'],pdf:'overview'};
+details['ai-support']={title:'생성형 AI를 활용한 제작 보조',text:'레벨 진행에 필요한 스폰 트리거와 공격 입력·애니메이션 연결을 학습하고, 기획서 작성 시 자료 조사와 아이디어 구체화, 규칙·수치 설정 및 초안 검토에 활용했습니다. AI의 제안을 기획 의도에 맞게 검토하고 수정했습니다.',images:['ai-support.webp'],pdf:'overview'};
+function renderSkill(key){const d=skills[key];if(!d)return;activeSkill=key;content.innerHTML=`<span class="skill-modal-label">${d.category}</span><h2 id="dialog-title">${d.title}</h2><p>${d.summary}</p>${d.items.length?`<h3 class="related-title">할 수 있는 일</h3><ul class="capability-list">${d.items.map(v=>`<li>${v}</li>`).join('')}</ul>`:''}${d.works.length?`<h3 class="related-title">관련 작업</h3>${d.works.map(([id,title])=>`<button class="related-work" data-related="${id}">${title}<span>↗</span></button>`).join('')}`:''}`;if(!dialog.open)show();else dialog.scrollTop=0;dialog.querySelector('.close').focus()}
+function addSkillReturn(){if(!activeSkill||!skills[activeSkill])return;const b=document.createElement('button');b.className='skill-return';b.textContent='← '+skills[activeSkill].title+' 활용 내용';b.onclick=()=>{location.hash='skill-'+activeSkill};content.prepend(b)}
+document.querySelectorAll('[data-skill]').forEach(b=>b.addEventListener('click',()=>{location.hash='skill-'+b.dataset.skill}));
+content.addEventListener('click',e=>{const b=e.target.closest('[data-related]');if(b)location.hash='work-'+b.dataset.related});
+readHash();
