@@ -1,0 +1,34 @@
+/* The showcase contains the current work and only its immediate successor. */
+.hero-showcase{min-width:0;width:100%;padding:16px 24px 0 0;outline-offset:8px}
+.showcase-stack{position:relative;isolation:isolate;height:clamp(380px,43vw,550px);touch-action:pan-y;user-select:none}
+.showcase-card{position:absolute;inset:0;margin:0;visibility:hidden;opacity:0;pointer-events:none;border:1px solid #64748d;background:var(--panel);transition:opacity .32s ease,transform .38s ease;transform:translateX(0);z-index:0}
+.showcase-card.is-current{visibility:visible;opacity:1;z-index:2;pointer-events:auto;box-shadow:0 10px 30px #0003;cursor:grab}
+.showcase-card.is-current:active{cursor:grabbing}
+.showcase-card.is-next{visibility:visible;opacity:.4;transform:translateX(18px) scaleY(.976);z-index:1}
+.showcase-image{width:100%;height:100%;display:block;pointer-events:none;object-position:center}
+.showcase-image.cover{object-fit:cover;object-position:61% center}
+.showcase-image.contain{object-fit:contain;padding:20px 12px 100px;background:#111a29}
+.showcase-mark{position:absolute;right:-10px;top:-16px;max-width:calc(100% - 16px);padding:11px 15px;background:#172132;border:1px solid #3c4b63;color:var(--text);font-size:10px;font-weight:800;letter-spacing:.04em;line-height:1.6;white-space:nowrap}
+.showcase-mark i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:middle}
+.showcase-caption{position:absolute;inset:auto 0 0;padding:56px 24px 22px;background:linear-gradient(transparent,#0b101bd9 48%,#0b101bf5);pointer-events:none}
+.showcase-caption strong{display:block;font-size:clamp(20px,2.2vw,30px);font-weight:800;letter-spacing:-.035em;line-height:1.35;color:var(--text)}
+.showcase-caption span{display:block;margin-top:6px;font-size:12px;line-height:1.7;color:#becce0}
+.showcase-card.is-next .showcase-mark,.showcase-card.is-next .showcase-caption{visibility:hidden}
+.showcase-card.is-next .showcase-image{object-fit:cover;padding:0}
+.showcase-controls{display:flex;align-items:center;gap:12px;margin-top:23px;min-height:38px}
+.showcase-label{font-size:8px;letter-spacing:.13em;color:var(--muted);white-space:nowrap}
+.showcase-dots{display:flex;gap:5px;align-items:center}
+.showcase-dot{width:23px;height:32px;padding:0;position:relative}
+.showcase-dot:after{content:'';position:absolute;left:0;right:0;top:14px;height:3px;background:#2e3c52;transition:background .2s}
+.showcase-dot.is-active:after,.showcase-dot:hover:after{background:var(--accent)}
+.showcase-counter{font-size:11px;letter-spacing:.07em;color:var(--muted);white-space:nowrap;margin-left:auto;font-variant-numeric:tabular-nums}
+.showcase-counter b{color:var(--accent);font-weight:700}
+.showcase-arrows{display:flex;gap:7px}
+.showcase-arrows button{width:36px;height:36px;padding:0;border:1px solid #445670;color:var(--text);font-size:20px;line-height:1;transition:background .2s,border-color .2s}
+.showcase-arrows button:hover{background:#1b2a42;border-color:var(--accent)}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+@media(min-width:1550px){.hero-showcase{max-width:580px}}
+@media(min-width:761px) and (max-width:1100px){.showcase-label{display:none}.showcase-controls{gap:8px}.showcase-dot{width:20px}.showcase-caption{padding:45px 18px 18px}.showcase-mark{font-size:9px;padding:9px 12px}}
+@media(max-width:760px){.hero-showcase{padding:16px 20px 0 0;max-width:540px;margin:0 auto}.showcase-stack{height:auto;aspect-ratio:4/5}.showcase-card.is-next{transform:translateX(14px) scaleY(.976)}.showcase-mark{right:-7px;top:-14px;font-size:9px;padding:10px 12px}.showcase-caption strong{font-size:24px}.showcase-caption span{font-size:11px}.showcase-controls{gap:8px;margin-top:18px}.showcase-label{font-size:7px}.showcase-dot{width:19px}.showcase-counter{font-size:10px}.showcase-arrows button{width:34px;height:34px}}
+@media(max-width:380px){.showcase-label{display:none}.showcase-caption{padding-inline:18px}}
+@media(prefers-reduced-motion:reduce){.showcase-card,.showcase-dot:after,.showcase-arrows button{transition:none}}
