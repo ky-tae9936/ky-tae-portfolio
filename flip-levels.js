@@ -5,6 +5,30 @@
   const imageButton = root.querySelector('.flip-level-image');
   const image = imageButton.querySelector('img');
   let index = 0;
+
+  const copy = root.querySelector('.flip-level-copy');
+  let measuredWidth = -1;
+  function reserveCopyHeight(force = false) {
+    const width = copy.getBoundingClientRect().width;
+    if (!width || (!force && Math.abs(width - measuredWidth) < 0.5)) return;
+    measuredWidth = width;
+    let tallest = 0;
+    levels.forEach(level => {
+      const probe = copy.cloneNode(true);
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;width:${width}px;min-height:0;height:auto;left:0;top:0;`;
+      probe.querySelector('[data-level-title]').textContent = level.title;
+      probe.querySelector('[data-level-body]').textContent = level.body;
+      root.append(probe);
+      tallest = Math.max(tallest, probe.getBoundingClientRect().height);
+      probe.remove();
+    });
+    copy.style.minHeight = `${Math.ceil(tallest)}px`;
+  }
+  reserveCopyHeight();
+  new ResizeObserver(() => reserveCopyHeight()).observe(copy);
+  if (document.fonts) document.fonts.ready.then(() => reserveCopyHeight(true));
+
   // Preload the next maps; the current image's natural ratio determines its height.
   levels.slice(1).forEach(level => { const img = new Image(); img.src = level.image; });
   function select(next) {
