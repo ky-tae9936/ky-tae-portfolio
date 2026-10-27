@@ -49,3 +49,38 @@
 .simulation-preview-link{display:flex;align-items:center;background:#0b1424;padding:15px}.simulation-preview-link img{width:100%;height:auto;object-fit:contain}.simulation-preview-link:hover{filter:brightness(1.08)}
 
 @media(min-width:761px){.profile-card{align-self:stretch;display:flex;flex-direction:column;align-items:center}.profile-card>.text-link{margin-top:auto;padding-top:30px}.profile-card>img{flex:none}.profile-card>.eyebrow{margin-top:0}}
+
+/* Approved about redesign: independently growing content columns. */
+.about-redesign .section-heading{margin-bottom:32px}
+.about-identity{display:flex;align-items:center;gap:34px;padding:22px;background:#101927;border-radius:8px}
+.about-identity>img{width:116px;aspect-ratio:413/531;object-fit:cover;flex:none}
+.about-identity .eyebrow{font-size:10px;margin-bottom:12px}
+.about-identity h3{font-size:30px;letter-spacing:-.04em}
+.about-identity>div>p:last-child{font-size:15px;line-height:1.95;margin-top:17px}
+.about-columns{display:grid;grid-template-columns:minmax(0,1.68fr) minmax(0,1fr);gap:42px;margin-top:44px}
+.about-primary,.about-secondary{display:flex;flex-direction:column;gap:54px;min-width:0}
+.about-secondary{border-left:1px solid var(--line);padding-left:40px}
+.about-block{min-width:0}
+.about-block>h3{display:flex;align-items:center;gap:16px;font-size:23px;letter-spacing:-.035em;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:20px}
+.about-block>h3 small{font-size:10px;color:var(--accent);letter-spacing:.06em;font-weight:700}
+.about-education,.about-skills{margin:0}
+.about-education>div{display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;align-items:baseline;padding:14px 0}
+.about-education dt{color:var(--accent);font-size:19px;font-weight:700}
+.about-education dd{margin:0;font-size:15px;color:var(--text);font-weight:400;white-space:nowrap;letter-spacing:-.035em;position:relative}
+.about-education>div:not(:last-child) dd:after{content:"";position:absolute;left:0;right:0;bottom:-14px;border-bottom:1px solid var(--line)}
+.about-skills>div{display:grid;grid-template-columns:160px minmax(0,1fr);gap:14px;align-items:start;padding:13px 0}
+.about-skills dt{color:var(--muted);font-size:14px;padding-top:4px}
+.about-skills dd{margin:0;display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.about-skills>div:not(:last-child) dd:after{content:"";position:absolute;left:0;right:0;bottom:-13px;border-bottom:1px solid var(--line)}
+.about-skills dd>span,.about-tags>li{display:inline-block;background:#151f30;color:#c5d1e2;border-radius:4px;padding:4px 11px;font-size:13px;line-height:1.8;max-width:100%;overflow-wrap:anywhere}
+.about-history,.about-tags{list-style:none;padding:0;margin:0}
+.about-history>li+li{border-top:1px solid var(--line);margin-top:25px;padding-top:25px}
+.about-history .about-year{color:var(--accent);font-size:14px;font-weight:700;margin-bottom:10px}
+.about-history h4{font-size:27px;line-height:1.4;margin:0 0 12px;letter-spacing:-.035em}
+.about-history>li>p:not(.about-year){font-size:14px;line-height:1.9}
+.about-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.about-tags>li{font-size:11px}
+@media(max-width:1150px) and (min-width:1001px){.about-columns{gap:28px;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr)}.about-secondary{padding-left:25px}.about-education dd{font-size:13px}.about-education>div{grid-template-columns:48px minmax(0,1fr);gap:10px}.about-skills>div{grid-template-columns:130px minmax(0,1fr)}}
+@media(max-width:1000px){.about-columns{grid-template-columns:1fr;gap:48px}.about-secondary{padding:0;border:0}.about-primary,.about-secondary{gap:42px}.about-education dd{white-space:normal}.about-identity>div>p:last-child br{display:none}}
+@media(max-width:600px){.about-identity{align-items:start;padding:18px;gap:18px;flex-wrap:wrap}.about-identity>img{width:88px}.about-identity>div{flex:1;min-width:175px}.about-identity h3{font-size:23px}.about-identity>div>p:last-child{font-size:12px;margin-top:12px}.about-identity .eyebrow{font-size:8px}.about-block>h3{font-size:20px}.about-education>div{grid-template-columns:48px minmax(0,1fr);gap:12px;padding:14px 0}.about-education dt{font-size:16px}.about-education dd{font-size:13px;line-height:1.9}.about-skills>div{grid-template-columns:1fr;gap:9px;padding:15px 0}.about-skills dt{font-size:12px}.about-skills dd>span{font-size:12px}.about-history h4{font-size:25px}.about-redesign .section-heading{align-items:start}.about-redesign .section-heading>p{max-width:150px}}
+
