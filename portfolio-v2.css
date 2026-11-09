@@ -60,3 +60,22 @@
 @media(max-width:800px){.portfolio-row{gap:5%}.detail-hero{padding:40px 0 65px}.detail-back{margin-bottom:45px}}
 @media(max-width:650px){.portfolio-row,.ai-intro{grid-template-columns:1fr}.portfolio-row{gap:28px;padding:48px 0}.portfolio-row.reverse .portfolio-copy,.portfolio-row.reverse>.portfolio-cover,.portfolio-row.reverse>.video-embed{order:initial}.portfolio-row .portfolio-copy{order:2!important}.portfolio-row>.portfolio-cover,.portfolio-row>.video-embed{order:1!important}.portfolio-cover img{aspect-ratio:1.55}.ai-intro{gap:0;padding-bottom:45px}.ai-intro>div:last-child{padding-top:0}.detail-hero h1{font-size:43px}.detail-hero p:last-child{font-size:14px}}
 
+
+/* Hero portfolio carousel: six works, preloaded videos, contained document covers. */
+.hero-frame[data-media="0"]{background:#101e2c url('flip-main.png') center/cover no-repeat}
+.hero-frame[data-media="1"]{background:#142331 url('hero-level.webp') center/cover no-repeat}
+.hero-frame[data-media="2"]{background:#101e2c url('boss-cover.webp') right center/auto 91% no-repeat}
+.hero-frame[data-media="3"]{background:#101e2c url('ai-cover.webp') right center/auto 91% no-repeat}
+.hero-frame[data-media="4"]{background:#101e2c url('simulator-preview.png') right center/auto 94% no-repeat}
+.hero-frame[data-media="5"]{background:#101e2c url('simulator-preview.png') center/cover no-repeat}
+.hero-frame iframe{width:max(100%,1227px);height:max(100%,56.25vw)}
+.hero-frame.is-active{animation-duration:8s}
+.hero-progress{width:100px}
+.hero-progress i{width:100%;transform:scaleX(0);transform-origin:left;animation:hero-countdown 8s linear forwards}
+@keyframes hero-countdown{to{transform:scaleX(1)}}
+.hero-play{display:none;border:1px solid #bad7e481;border-radius:4px;color:#f4fbff;background:#10243c75;padding:11px 13px;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer}
+.hero.has-video .hero-play{display:block}
+.hero-play:hover{background:#70bfe15c}
+.portfolio-row[id]{scroll-margin-top:95px}
+@media(max-width:650px){.hero .hero-frame iframe{width:max(100%,1085px);height:max(100%,56.25vw)}.hero-play{font-size:0;padding:6px 9px;min-width:35px;height:36px}.hero-play:after{content:'▶';font-size:14px}.hero-controls{gap:4px}.hero-bottom{gap:10px}.hero-project-title{font-size:18px}.hero-project-detail{max-width:230px}}
+
