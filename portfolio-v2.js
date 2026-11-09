@@ -41,18 +41,47 @@ function showSlide(index) {
 function stopCarousel() { window.clearInterval(carouselTimer); }
 function startCarousel() {
   stopCarousel();
-  if (!reduceMotion.matches && !document.hidden) carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 9000);
+  if (!document.hidden) carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 7000);
 }
 
 document.querySelector('#hero-prev').addEventListener('click', () => { showSlide(activeSlide - 1); startCarousel(); });
 document.querySelector('#hero-next').addEventListener('click', () => { showSlide(activeSlide + 1); startCarousel(); });
-hero.addEventListener('mouseenter', stopCarousel);
-hero.addEventListener('mouseleave', startCarousel);
-hero.addEventListener('focusin', stopCarousel);
-hero.addEventListener('focusout', startCarousel);
 document.addEventListener('visibilitychange', startCarousel);
-reduceMotion.addEventListener('change', startCarousel);
+showSlide(0);
 startCarousel();
+
+const detailSections = Array.from(document.querySelectorAll('.detail-section'));
+const documentCards = Array.from(document.querySelectorAll('.document-card'));
+const levelVideo = document.querySelector('.level-video');
+
+function openDetail(id, documentId) {
+  const section = document.getElementById(id);
+  if (!section || !section.classList.contains('detail-section')) return;
+  detailSections.forEach(item => { item.hidden = item !== section; });
+  documentCards.forEach(card => { card.hidden = Boolean(documentId) && card.dataset.document !== documentId; });
+  levelVideo.hidden = Boolean(documentId) && documentId !== 'level';
+  document.querySelectorAll('[data-open-detail]').forEach(link => {
+    const selected = link.dataset.openDetail === id && (!documentId || link.dataset.document === documentId);
+    link.classList.toggle('is-selected', selected);
+    if (selected) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+  section.scrollIntoView({ behavior: reduceMotion.matches ? 'instant' : 'smooth', block: 'start' });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    const id = link.getAttribute('href').slice(1);
+    if (!['ai', 'team', 'personal'].includes(id)) return;
+    event.preventDefault();
+    history.replaceState(null, '', `#${id}`);
+    openDetail(id, link.dataset.document);
+  });
+});
+
+if (['ai', 'team', 'personal'].includes(location.hash.slice(1))) {
+  openDetail(location.hash.slice(1));
+}
 
 const menuButton = document.querySelector('.menu-button');
 const siteNav = document.querySelector('#site-nav');
