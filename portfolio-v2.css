@@ -79,3 +79,4 @@
 .portfolio-row[id]{scroll-margin-top:95px}
 @media(max-width:650px){.hero .hero-frame iframe{width:max(100%,1085px);height:max(100%,56.25vw)}.hero-play{font-size:0;padding:6px 9px;min-width:35px;height:36px}.hero-play:after{content:'▶';font-size:14px}.hero-controls{gap:4px}.hero-bottom{gap:10px}.hero-project-title{font-size:18px}.hero-project-detail{max-width:230px}}
 
+@media(prefers-reduced-motion:reduce){.hero-frame iframe{display:block!important}.hero-progress i{animation-duration:8s!important}}
