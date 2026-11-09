@@ -1,7 +1,7 @@
 const portfolioSlides = [
-  { type: 'TEAM PROJECT · 2025', title: 'FLIP ↗', detail: '레벨 디자인 · 에셋·사운드 리서치 · Unity', href: '#team' },
-  { type: 'PERSONAL PORTFOLIO', title: '액션 RPG 레벨 디자인 ↗', detail: '동선 · 전투 학습 · 적 배치 · 작업 영상', href: '#personal' },
-  { type: 'AI PRACTICE', title: '플레이어 공격 콤보 테스트 ↗', detail: '공격 입력과 애니메이션 연결 · AI 활용', href: '#ai' }
+  { type: 'TEAM PROJECT · 2025', title: 'FLIP ↗', detail: '레벨 디자인 · 에셋·사운드 리서치 · Unity', href: 'team.html' },
+  { type: 'PERSONAL PORTFOLIO', title: '액션 RPG 레벨 디자인 ↗', detail: '동선 · 전투 학습 · 적 배치 · 작업 영상', href: 'personal.html' },
+  { type: 'AI PRACTICE', title: '플레이어 공격 콤보 테스트 ↗', detail: '공격 입력과 애니메이션 연결 · AI 활용', href: 'ai.html' }
 ];
 
 const hero = document.querySelector('.hero');
@@ -61,39 +61,6 @@ document.querySelector('#hero-next').addEventListener('click', () => { showSlide
 document.addEventListener('visibilitychange', startCarousel);
 showSlide(0);
 startCarousel();
-
-const detailSections = Array.from(document.querySelectorAll('.detail-section'));
-const documentCards = Array.from(document.querySelectorAll('.document-card'));
-const levelVideo = document.querySelector('.level-video');
-
-function openDetail(id, documentId) {
-  const section = document.getElementById(id);
-  if (!section || !section.classList.contains('detail-section')) return;
-  detailSections.forEach(item => { item.hidden = item !== section; });
-  documentCards.forEach(card => { card.hidden = Boolean(documentId) && card.dataset.document !== documentId; });
-  levelVideo.hidden = Boolean(documentId) && documentId !== 'level';
-  document.querySelectorAll('[data-open-detail]').forEach(link => {
-    const selected = link.dataset.openDetail === id && (!documentId || link.dataset.document === documentId);
-    link.classList.toggle('is-selected', selected);
-    if (selected) link.setAttribute('aria-current', 'true');
-    else link.removeAttribute('aria-current');
-  });
-  section.scrollIntoView({ behavior: reduceMotion.matches ? 'instant' : 'smooth', block: 'start' });
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', event => {
-    const id = link.getAttribute('href').slice(1);
-    if (!['ai', 'team', 'personal'].includes(id)) return;
-    event.preventDefault();
-    history.replaceState(null, '', `#${id}`);
-    openDetail(id, link.dataset.document);
-  });
-});
-
-if (['ai', 'team', 'personal'].includes(location.hash.slice(1))) {
-  openDetail(location.hash.slice(1));
-}
 
 const menuButton = document.querySelector('.menu-button');
 const siteNav = document.querySelector('#site-nav');
