@@ -15,6 +15,17 @@ let activeSlide = 0;
 let carouselTimer;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+function requestPlayback(video) {
+  video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*');
+  video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+}
+
+frames.forEach(frame => {
+  frame.querySelector('iframe')?.addEventListener('load', event => {
+    if (frame.classList.contains('is-active')) requestPlayback(event.currentTarget);
+  });
+});
+
 function showSlide(index) {
   activeSlide = (index + portfolioSlides.length) % portfolioSlides.length;
   const slide = portfolioSlides[activeSlide];
@@ -24,6 +35,7 @@ function showSlide(index) {
     const video = frame.querySelector('iframe');
     if (video) {
       if (isActive && video.dataset.src) video.src = video.dataset.src;
+      if (isActive && video.src) requestPlayback(video);
       if (!isActive && video.src) {
         video.dataset.src = video.src;
         video.removeAttribute('src');
@@ -41,7 +53,7 @@ function showSlide(index) {
 function stopCarousel() { window.clearInterval(carouselTimer); }
 function startCarousel() {
   stopCarousel();
-  if (!document.hidden) carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 7000);
+  carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 7000);
 }
 
 document.querySelector('#hero-prev').addEventListener('click', () => { showSlide(activeSlide - 1); startCarousel(); });
