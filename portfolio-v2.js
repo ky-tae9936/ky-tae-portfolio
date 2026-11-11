@@ -94,6 +94,7 @@ function showSlide(index) {
     }
   });
   hero.classList.toggle('has-video', Boolean(frames[activeSlide].querySelector('.hero-youtube')));
+  hero.classList.toggle('has-document', activeSlide === 2 || activeSlide === 3);
   slideType.textContent = slide.type;
   slideTitle.textContent = slide.title;
   slideTitle.href = slide.href;
