@@ -54,15 +54,15 @@ function requestPlayback(index) {
 }
 
 function startDocumentSequence(frame) {
-  const pages = Array.from(frame.querySelectorAll('.hero-doc-page'));
-  if (!pages.length) return;
-  let currentPage = 0;
-  const showPage = () => pages.forEach((page, index) => page.classList.toggle('is-current', index === currentPage));
-  showPage();
-  if (pages.length < 2) return;
+  const spreads = Array.from(frame.querySelectorAll('.hero-doc-spread'));
+  if (!spreads.length) return;
+  let currentSpread = 0;
+  const showSpread = () => spreads.forEach((spread, index) => spread.classList.toggle('is-current', index === currentSpread));
+  showSpread();
+  if (spreads.length < 2) return;
   documentPageTimer = window.setInterval(() => {
-    currentPage = (currentPage + 1) % pages.length;
-    showPage();
+    currentSpread = (currentSpread + 1) % spreads.length;
+    showSpread();
   }, 2600);
 }
 
