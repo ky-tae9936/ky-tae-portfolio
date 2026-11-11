@@ -17,6 +17,7 @@ const slideProgress = document.querySelector('.hero-progress i');
 const playButton = document.querySelector('#hero-play');
 let activeSlide = 0;
 let carouselTimer;
+let documentPageTimer;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const youtubePlayers = new Map();
 const lastVideoStarts = new Map();
@@ -52,12 +53,17 @@ function requestPlayback(index) {
   playRandomExcerpt(index);
 }
 
-function restartDocumentPages(frame) {
-  frame.querySelectorAll('.hero-doc-page').forEach(page => {
-    page.style.animation = 'none';
-    void page.offsetWidth;
-    page.style.animation = '';
-  });
+function startDocumentSequence(frame) {
+  const pages = Array.from(frame.querySelectorAll('.hero-doc-page'));
+  if (!pages.length) return;
+  let currentPage = 0;
+  const showPage = () => pages.forEach((page, index) => page.classList.toggle('is-current', index === currentPage));
+  showPage();
+  if (pages.length < 2) return;
+  documentPageTimer = window.setInterval(() => {
+    currentPage = (currentPage + 1) % pages.length;
+    showPage();
+  }, 2600);
 }
 
 window.onYouTubeIframeAPIReady = () => {
@@ -89,12 +95,13 @@ youtubeApi.src = 'https://www.youtube.com/iframe_api';
 document.head.append(youtubeApi);
 
 function showSlide(index) {
+  window.clearInterval(documentPageTimer);
   activeSlide = (index + portfolioSlides.length) % portfolioSlides.length;
   const slide = portfolioSlides[activeSlide];
   frames.forEach((frame, frameIndex) => {
     const isActive = frameIndex === activeSlide;
     frame.classList.toggle('is-active', isActive);
-    if (isActive) restartDocumentPages(frame);
+    if (isActive && frame.querySelector('.hero-doc-preview')) startDocumentSequence(frame);
     const videoIndex = frame.querySelector('.hero-youtube') ? frameIndex : -1;
     if (videoIndex >= 0) {
       if (isActive) {
