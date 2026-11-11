@@ -68,6 +68,8 @@
 .hero-frame[data-media="3"]{background:#101e2c url('ai-cover.webp') right center/auto 91% no-repeat}
 .hero-frame[data-media="4"]{background:#101e2c url('simulator-preview.png') right center/auto 94% no-repeat}
 .hero-frame[data-media="5"]{background:#101e2c url('simulator-preview.png') center/cover no-repeat}
+.hero-frame[data-media="2"],.hero-frame[data-media="3"]{background-size:cover;background-position:center right}
+.hero.has-document .hero-shade{background:linear-gradient(90deg,rgba(4,13,23,.97) 0%,rgba(4,13,23,.78) 38%,rgba(4,13,23,.45) 68%,rgba(4,13,23,.28) 100%),linear-gradient(0deg,rgba(4,13,23,.78),transparent 34%)}
 .hero-frame iframe{width:max(100%,1227px);height:max(100%,56.25vw)}
 .hero-frame.is-active{animation-duration:8s}
 .hero-progress{width:100px}
@@ -80,3 +82,4 @@
 @media(max-width:650px){.hero .hero-frame iframe{width:max(100%,1085px);height:max(100%,56.25vw)}.hero-play{font-size:0;padding:6px 9px;min-width:35px;height:36px}.hero-play:after{content:'▶';font-size:14px}.hero-controls{gap:4px}.hero-bottom{gap:10px}.hero-project-title{font-size:18px}.hero-project-detail{max-width:230px}}
 
 @media(prefers-reduced-motion:reduce){.hero-frame iframe{display:block!important}.hero-progress i{animation-duration:8s!important}}
+
