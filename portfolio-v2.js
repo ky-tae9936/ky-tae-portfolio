@@ -18,21 +18,67 @@ const playButton = document.querySelector('#hero-play');
 let activeSlide = 0;
 let carouselTimer;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const youtubePlayers = new Map();
+const lastVideoStarts = new Map();
 
-function requestPlayback(video) {
-  video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*');
-  video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+function playRandomExcerpt(index) {
+  const player = youtubePlayers.get(index);
+  if (!player || index !== activeSlide) return;
+  const duration = player.getDuration();
+  if (!duration) {
+    window.setTimeout(() => playRandomExcerpt(index), 500);
+    return;
+  }
+  const first = Math.min(8, Math.max(0, duration - 2));
+  const last = Math.max(first, duration - 6);
+  let start = first + Math.random() * (last - first);
+  const previous = lastVideoStarts.get(index);
+  if (last - first > 20 && previous !== undefined && Math.abs(start - previous) < 12) {
+    start = start + (last - first) / 2;
+    if (start > last) start = first + (start - last);
+  }
+  lastVideoStarts.set(index, start);
+  player.mute();
+  player.seekTo(start, true);
+  window.setTimeout(() => {
+    if (index === activeSlide) player.playVideo();
+  }, 180);
 }
 
-function pausePlayback(video) {
-  video.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), '*');
+function requestPlayback(index) {
+  const player = youtubePlayers.get(index);
+  if (!player) return;
+  player.mute();
+  playRandomExcerpt(index);
 }
 
-frames.forEach(frame => {
-  frame.querySelector('iframe')?.addEventListener('load', event => {
-    if (frame.classList.contains('is-active')) requestPlayback(event.currentTarget);
+window.onYouTubeIframeAPIReady = () => {
+  frames.forEach((frame, index) => {
+    const mount = frame.querySelector('.hero-youtube');
+    if (!mount) return;
+    const videoId = mount.dataset.videoId;
+    const player = new YT.Player(mount, {
+      videoId,
+      host: 'https://www.youtube-nocookie.com',
+      playerVars: {
+        autoplay: 0, controls: 0, disablekb: 1, playsinline: 1,
+        modestbranding: 1, rel: 0, iv_load_policy: 3, origin: location.origin
+      },
+      events: {
+        onReady(event) {
+          youtubePlayers.set(index, event.target);
+          event.target.mute();
+          if (index === activeSlide) playRandomExcerpt(index);
+        }
+      }
+    });
+    youtubePlayers.set(index, player);
   });
-});
+};
+
+const youtubeApi = document.createElement('script');
+youtubeApi.src = 'https://www.youtube.com/iframe_api';
+document.head.append(youtubeApi);
 
 function showSlide(index) {
   activeSlide = (index + portfolioSlides.length) % portfolioSlides.length;
@@ -40,15 +86,14 @@ function showSlide(index) {
   frames.forEach((frame, frameIndex) => {
     const isActive = frameIndex === activeSlide;
     frame.classList.toggle('is-active', isActive);
-    const video = frame.querySelector('iframe');
-    if (video) {
+    const videoIndex = frame.querySelector('.hero-youtube') ? frameIndex : -1;
+    if (videoIndex >= 0) {
       if (isActive) {
-        requestPlayback(video);
-        window.setTimeout(() => { if (frame.classList.contains('is-active')) requestPlayback(video); }, 1200);
-      } else pausePlayback(video);
+        requestPlayback(videoIndex);
+      } else youtubePlayers.get(videoIndex)?.pauseVideo();
     }
   });
-  hero.classList.toggle('has-video', Boolean(frames[activeSlide].querySelector('iframe')));
+  hero.classList.toggle('has-video', Boolean(frames[activeSlide].querySelector('.hero-youtube')));
   slideType.textContent = slide.type;
   slideTitle.textContent = slide.title;
   slideTitle.href = slide.href;
@@ -68,8 +113,7 @@ function startCarousel() {
 document.querySelector('#hero-prev').addEventListener('click', () => { showSlide(activeSlide - 1); startCarousel(); });
 document.querySelector('#hero-next').addEventListener('click', () => { showSlide(activeSlide + 1); startCarousel(); });
 playButton.addEventListener('click', () => {
-  const video = frames[activeSlide].querySelector('iframe');
-  if (video) requestPlayback(video);
+  if (frames[activeSlide].querySelector('.hero-youtube')) requestPlayback(activeSlide);
 });
 document.addEventListener('visibilitychange', startCarousel);
 showSlide(0);
@@ -90,3 +134,4 @@ siteNav.addEventListener('click', event => {
     menuButton.setAttribute('aria-label', '메뉴 열기');
   }
 });
+
