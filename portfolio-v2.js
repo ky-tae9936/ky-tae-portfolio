@@ -52,6 +52,14 @@ function requestPlayback(index) {
   playRandomExcerpt(index);
 }
 
+function restartDocumentPages(frame) {
+  frame.querySelectorAll('.hero-doc-page').forEach(page => {
+    page.style.animation = 'none';
+    void page.offsetWidth;
+    page.style.animation = '';
+  });
+}
+
 window.onYouTubeIframeAPIReady = () => {
   frames.forEach((frame, index) => {
     const mount = frame.querySelector('.hero-youtube');
@@ -86,6 +94,7 @@ function showSlide(index) {
   frames.forEach((frame, frameIndex) => {
     const isActive = frameIndex === activeSlide;
     frame.classList.toggle('is-active', isActive);
+    if (isActive) restartDocumentPages(frame);
     const videoIndex = frame.querySelector('.hero-youtube') ? frameIndex : -1;
     if (videoIndex >= 0) {
       if (isActive) {
