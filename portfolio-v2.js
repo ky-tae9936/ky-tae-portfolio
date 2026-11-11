@@ -3,8 +3,7 @@ const portfolioSlides = [
   { type: 'PERSONAL PORTFOLIO · 01', title: '액션 RPG 레벨 디자인 ↗', detail: '동선 · 전투 학습 · 적 배치 · 작업 영상', href: 'personal.html#level' },
   { type: 'PERSONAL PORTFOLIO · 02', title: '보스 몬스터 전투 기획 ↗', detail: '로스트아크 · 패턴과 대응 설계 · PDF 기획서', href: 'personal.html#boss' },
   { type: 'PERSONAL PORTFOLIO · 03', title: '일반 몬스터 AI 기획 ↗', detail: '로스트아크 · 상태 전환과 행동 규칙 · PDF 기획서', href: 'personal.html#monster' },
-  { type: 'AI PRACTICE · 01', title: '몬스터 AI 시뮬레이터 ↗', detail: '대기 · 추격 · 공격 · 복귀 상태 검증', href: 'ai.html#simulator' },
-  { type: 'AI PRACTICE · 02', title: '플레이어 공격 콤보 테스트 ↗', detail: '공격 입력과 애니메이션 연결 · AI 활용', href: 'ai.html#combo' }
+  { type: 'AI PRACTICE', title: '플레이어 공격 콤보 테스트 ↗', detail: '공격 입력과 애니메이션 연결 · AI 활용', href: 'ai.html#combo' }
 ];
 
 const hero = document.querySelector('.hero');
@@ -54,10 +53,40 @@ function requestPlayback(index) {
 }
 
 function startDocumentSequence(frame) {
-  const spreads = Array.from(frame.querySelectorAll('.hero-doc-spread'));
-  if (!spreads.length) return;
-  let currentSpread = 0;
-  const showSpread = () => spreads.forEach((spread, index) => spread.classList.toggle('is-current', index === currentSpread));
+  const preview = frame.querySelector('.hero-doc-preview');
+  if (!preview) return;
+  let spreads = Array.from(preview.querySelectorAll('.hero-doc-spread'));
+  if (!spreads.length) {
+    const pageCount = Number(preview.dataset.pageCount);
+    const prefix = preview.dataset.filePrefix;
+    for (let firstPage = 1; firstPage <= pageCount; firstPage += 2) {
+      const spread = document.createElement('div');
+      spread.className = 'hero-doc-spread';
+      for (let pageNumber = firstPage; pageNumber <= firstPage + 1; pageNumber += 1) {
+        const page = document.createElement('img');
+        page.alt = '';
+        page.dataset.pageNumber = String(pageNumber);
+        if (pageNumber <= pageCount) page.dataset.src = `${prefix}-page-${String(pageNumber).padStart(2, '0')}.jpg`;
+        spread.append(page);
+      }
+      preview.append(spread);
+    }
+    spreads = Array.from(preview.querySelectorAll('.hero-doc-spread'));
+  }
+  let currentSpread = frame._documentSpreadIndex || 0;
+  const loadSpread = (index) => {
+    spreads[index]?.querySelectorAll('img[data-src]').forEach((page) => {
+      page.src = page.dataset.src;
+      page.removeAttribute('data-src');
+    });
+  };
+  const showSpread = () => {
+    spreads.forEach((spread, index) => spread.classList.toggle('is-current', index === currentSpread));
+    frame._documentSpreadIndex = currentSpread;
+    loadSpread(currentSpread);
+    loadSpread((currentSpread + 1) % spreads.length);
+  };
+  currentSpread %= spreads.length;
   showSpread();
   if (spreads.length < 2) return;
   documentPageTimer = window.setInterval(() => {
