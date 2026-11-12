@@ -137,3 +137,24 @@
 .page-rail:hover .rail-go,.page-rail:focus-within .rail-go{opacity:1}
 @media(max-width:750px){.page-rail,.page-rail:hover,.page-rail:focus-within{inset:auto 10px 10px;width:auto;height:auto;min-height:0;padding:7px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;border:1px solid #d7e2e9;border-radius:12px;background:#fffffff2;box-shadow:0 8px 30px #10273d26;backdrop-filter:blur(12px)}.rail-heading{display:none}.page-rail a.rail-item,.page-rail a.rail-item:hover,.page-rail a.rail-item:focus-visible{min-height:49px;flex:none;justify-content:center;gap:5px;padding:5px 3px;border-radius:8px}.rail-number{width:22px;height:22px;font-size:9px}.rail-info{opacity:1;transform:none;flex:0 1 auto;gap:0}.rail-info strong{font-size:10px;white-space:nowrap}.rail-info small,.rail-go,.page-rail img{display:none}.site-footer{padding-bottom:80px}}
 @media(prefers-reduced-motion:reduce){.page-rail,.page-rail *{transition-duration:.01ms!important}}
+
+
+/* Image-led project cards: use the complete tile as the artwork. */
+.page-rail{width:78px;padding:17px 9px;gap:9px}
+.page-rail:hover,.page-rail:focus-within{width:330px;padding:17px 13px}
+.rail-heading{height:60px;padding-left:12px}
+.page-rail a.rail-item,.page-rail a.rail-item.is-current{isolation:isolate;display:block;padding:0;border:1px solid #d8e3e9;border-radius:9px;background:#102234;color:#fff;box-shadow:0 5px 14px #0c253510;transition:flex .36s cubic-bezier(.2,.75,.2,1),border-color .25s,box-shadow .25s,transform .25s}
+.page-rail a.rail-item:before{content:'';position:absolute;inset:0;z-index:0;border-radius:inherit;background:linear-gradient(180deg,rgba(5,17,29,.28) 0%,rgba(5,17,29,.2) 34%,rgba(5,17,29,.84) 100%);opacity:.8;transition:opacity .28s}
+.page-rail a.rail-item:hover,.page-rail a.rail-item:focus-visible{flex:2.4;transform:translateX(-2px);border-color:#7fc5e5;box-shadow:0 12px 28px #102b3d30;color:#fff}
+.page-rail a.rail-item:hover:before,.page-rail a.rail-item:focus-visible:before{opacity:1;background:linear-gradient(180deg,rgba(5,17,29,.15) 0%,rgba(5,17,29,.08) 30%,rgba(5,17,29,.82) 100%)}
+.page-rail a.rail-item.is-current:not(:hover):not(:focus-visible){border-color:#8bc9e5;box-shadow:inset 0 0 0 1px #8bc9e555}
+.rail-number{position:absolute;z-index:2;top:13px;left:14px;width:auto;height:auto;display:block;padding:0;background:none;color:#fff;font:700 11px 'DM Sans',sans-serif;letter-spacing:.12em;text-shadow:0 1px 8px #071522aa}
+.rail-info{position:absolute;z-index:2;left:15px;right:16px;bottom:16px;display:flex;gap:6px;white-space:normal;text-shadow:0 1px 8px #071522aa}
+.rail-info strong{font-size:15px;line-height:1.4}
+.rail-info small{color:#e4f0f6;font-size:11px;line-height:1.55}
+.page-rail img{position:absolute;z-index:-1;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center 45%;border-radius:inherit;opacity:.52;transition:opacity .35s,transform .6s}
+.page-rail a.rail-item:hover img,.page-rail a.rail-item:focus-visible img{height:100%;opacity:1;transform:scale(1.025)}
+.rail-go{position:absolute;z-index:2;top:12px;right:13px;width:25px;height:25px;display:grid;place-items:center;border:1px solid #ffffff69;border-radius:50%;color:#fff;font-size:13px;opacity:0;text-shadow:none;transition:opacity .2s,background .2s}
+.page-rail:hover .rail-go,.page-rail:focus-within .rail-go{opacity:1}
+.page-rail a.rail-item:hover .rail-go,.page-rail a.rail-item:focus-visible .rail-go{background:#ffffff2b}
+@media(max-width:750px){.page-rail,.page-rail:hover,.page-rail:focus-within{inset:auto 10px 10px;width:auto;height:auto;min-height:0;padding:6px;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.page-rail a.rail-item,.page-rail a.rail-item:hover,.page-rail a.rail-item:focus-visible,.page-rail a.rail-item.is-current{min-height:52px;display:flex;align-items:center;justify-content:center;padding:4px 2px;border-radius:8px;transform:none;box-shadow:none}.page-rail a.rail-item:before{background:#0b1a28aa}.rail-number{position:relative;top:auto;left:auto;width:21px;height:21px;display:grid;place-items:center;padding:0;border-radius:50%;background:#e6f3f8;color:#1d6084;font-size:9px;text-shadow:none}.rail-info{position:relative;left:auto;right:auto;bottom:auto;flex:0 1 auto;display:flex;gap:0;white-space:nowrap;text-shadow:none}.rail-info strong{font-size:10px}.rail-info small,.rail-go,.page-rail img{display:none}.site-footer{padding-bottom:80px}}
