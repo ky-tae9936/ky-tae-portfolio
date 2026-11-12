@@ -187,3 +187,17 @@
 .gstar-figure figcaption{padding:12px 15px;color:#63798a;font-size:11px}
 @media(max-width:800px){.team-role-grid{grid-template-columns:1fr}.gstar-story{gap:28px}.gstar-figure img{max-height:530px}}
 @media(max-width:650px){.team-role-section,.gstar-story{margin-top:55px}.flip-gallery,.gstar-story{grid-template-columns:1fr}.team-role-card{padding:20px}.flip-gallery img{aspect-ratio:1.45}.gstar-story{padding-top:38px}}
+
+/* Detailed FLIP design and validation process. */
+.team-process{margin:26px 0 8px;padding:22px 23px 24px;background:#eef4f7;border:1px solid #dce6eb}
+.team-process-label{margin:0 0 17px;color:#235c7a;font-size:12px;font-weight:800;letter-spacing:.04em}
+.team-process ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;list-style:none;margin:0;padding:0}
+.team-process li{position:relative;display:flex;flex-direction:column;gap:7px;padding:0 16px;border-left:1px solid #c9d8e1}
+.team-process li:first-child{padding-left:0;border-left:0}
+.team-process li>span{font:800 10px 'DM Sans',sans-serif;letter-spacing:.1em;color:#388eb6}
+.team-process li strong{font-size:13px;color:#233d51}
+.team-process li small{font-size:10px;line-height:1.6;color:#687d8d}
+.team-story-heading>p:last-child{max-width:840px}
+.gstar-copy>p{font-size:14px;line-height:2}
+@media(max-width:800px){.team-process ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.team-process li:nth-child(3){padding-left:0;border-left:0}}
+@media(max-width:650px){.team-process{padding:18px 16px}.team-process ol{grid-template-columns:1fr;gap:13px}.team-process li,.team-process li:nth-child(3){padding:0 0 0 13px;border-left:1px solid #c9d8e1}.team-process li small{font-size:11px}}
