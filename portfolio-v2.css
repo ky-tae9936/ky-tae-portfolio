@@ -100,3 +100,17 @@
 .level-showcase-video{margin-bottom:0}
 .level-showcase-description{margin-bottom:70px}
 @media(max-width:650px){.showcase-description{grid-template-columns:1fr;gap:12px;margin-top:26px;padding-top:25px}.showcase-description .detail-facts{margin-top:0}}
+
+
+/* Expandable page navigation rail on project detail pages. */
+.page-rail{position:fixed;z-index:35;right:0;top:50%;transform:translateY(-50%);width:60px;padding:13px 9px;background:rgba(11,20,34,.94);border:1px solid #34516b;border-right:0;border-radius:12px 0 0 12px;box-shadow:0 12px 32px #07121e38;overflow:hidden;transition:width .28s cubic-bezier(.2,.75,.2,1),padding .28s,background .2s;backdrop-filter:blur(12px)}
+.page-rail:hover,.page-rail:focus-within{width:242px;padding:17px 14px;background:rgba(11,20,34,.98)}
+.page-rail-label{display:block;color:#8abbd8;font:800 10px 'DM Sans','Noto Sans KR',sans-serif;letter-spacing:.15em;padding:0 0 8px;text-transform:uppercase;white-space:nowrap}
+.page-rail a{display:flex;align-items:center;gap:12px;min-height:43px;padding:0 8px;border-radius:6px;color:#d5e5f0;white-space:nowrap;transition:background .2s,color .2s}
+.page-rail a:hover,.page-rail a:focus-visible{background:#1a3853;color:#fff}
+.page-rail a.is-current{background:#17344c;color:#a8dfff}
+.rail-index{flex:0 0 22px;font:700 10px 'DM Sans',sans-serif;color:#78bfe4}
+.rail-text{flex:1;font-size:12px;font-weight:700;opacity:0;transform:translateX(5px);transition:opacity .2s,transform .2s}
+.page-rail:hover .rail-text,.page-rail:focus-within .rail-text{opacity:1;transform:translateX(0)}
+.rail-arrow{width:15px;text-align:center;color:#8ecce9;font-size:13px}
+@media(max-width:650px){.page-rail{position:fixed;top:auto;right:10px;bottom:12px;left:10px;width:auto;transform:none;padding:6px;background:rgba(11,20,34,.96);border:1px solid #34516b;border-radius:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.page-rail:hover,.page-rail:focus-within{width:auto;padding:6px}.page-rail-label{display:none}.page-rail a{justify-content:center;gap:4px;min-height:42px;padding:4px 2px}.rail-index{display:none}.rail-text{opacity:1;transform:none;font-size:10px;overflow:hidden;text-overflow:ellipsis}.rail-arrow{display:none}.site-footer{padding-bottom:70px}}
