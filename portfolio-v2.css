@@ -114,3 +114,26 @@
 .page-rail:hover .rail-text,.page-rail:focus-within .rail-text{opacity:1;transform:translateX(0)}
 .rail-arrow{width:15px;text-align:center;color:#8ecce9;font-size:13px}
 @media(max-width:650px){.page-rail{position:fixed;top:auto;right:10px;bottom:12px;left:10px;width:auto;transform:none;padding:6px;background:rgba(11,20,34,.96);border:1px solid #34516b;border-radius:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.page-rail:hover,.page-rail:focus-within{width:auto;padding:6px}.page-rail-label{display:none}.page-rail a{justify-content:center;gap:4px;min-height:42px;padding:4px 2px}.rail-index{display:none}.rail-text{opacity:1;transform:none;font-size:10px;overflow:hidden;text-overflow:ellipsis}.rail-arrow{display:none}.site-footer{padding-bottom:70px}}
+
+
+/* Full-height portfolio chooser: categories open directly from any detail page. */
+.page-rail{position:fixed;z-index:40;inset:0 0 0 auto;width:72px;height:100dvh;min-height:100vh;padding:20px 8px;background:#fff;color:#172535;border:0;border-left:1px solid #d9e2e8;border-radius:0;box-shadow:-10px 0 35px #132c4012;transform:none;display:flex;flex-direction:column;gap:8px;overflow:hidden;transition:width .35s cubic-bezier(.2,.75,.2,1),box-shadow .25s;backdrop-filter:none}
+.page-rail:hover,.page-rail:focus-within{width:320px;padding:20px 14px;background:#fff;box-shadow:-16px 0 46px #132c4022}
+.rail-heading{height:56px;flex:none;padding:0 10px 10px;border-bottom:1px solid #e0e8ed;display:flex;flex-direction:column;justify-content:center;gap:5px;white-space:nowrap;overflow:hidden}
+.rail-heading span{font:800 9px 'DM Sans',sans-serif;letter-spacing:.17em;color:#2983af;opacity:0;transition:opacity .2s}
+.rail-heading strong{font-size:13px;opacity:0;transition:opacity .2s}
+.page-rail:hover .rail-heading span,.page-rail:hover .rail-heading strong,.page-rail:focus-within .rail-heading span,.page-rail:focus-within .rail-heading strong{opacity:1}
+.page-rail a.rail-item{position:relative;min-height:0;flex:1;display:flex;align-items:center;gap:12px;padding:10px 11px;border:1px solid transparent;border-radius:8px;background:#f6f9fb;color:#203448;overflow:hidden;transition:flex .3s,background .25s,border-color .25s,color .25s;white-space:normal}
+.page-rail a.rail-item:hover,.page-rail a.rail-item:focus-visible{flex:2.5;background:#edf6fb;border-color:#d5e7f1;color:#12314a}
+.page-rail a.rail-item.is-current{background:#eaf5fb;border-color:#cee4f0;color:#113752}
+.rail-number{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;background:#e4eff5;color:#2c759b;font:700 11px 'DM Sans',sans-serif;transition:opacity .2s}
+.rail-info{min-width:0;flex:1;display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s;white-space:nowrap}
+.page-rail:hover .rail-info,.page-rail:focus-within .rail-info{opacity:1;transform:none}
+.rail-info strong{font-size:14px;line-height:1.4}
+.rail-info small{font-size:11px;color:#718394;line-height:1.5;white-space:normal}
+.page-rail img{position:absolute;left:58px;right:10px;bottom:9px;width:calc(100% - 68px);height:0;object-fit:cover;object-position:center 45%;border-radius:5px;opacity:0;transition:height .28s,opacity .25s}
+.page-rail:hover a.rail-item:hover img,.page-rail:focus-within a.rail-item:focus-visible img{height:36%;opacity:1}
+.rail-go{flex:none;color:#3686ae;font-size:14px;opacity:0;transition:opacity .2s}
+.page-rail:hover .rail-go,.page-rail:focus-within .rail-go{opacity:1}
+@media(max-width:750px){.page-rail,.page-rail:hover,.page-rail:focus-within{inset:auto 10px 10px;width:auto;height:auto;min-height:0;padding:7px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;border:1px solid #d7e2e9;border-radius:12px;background:#fffffff2;box-shadow:0 8px 30px #10273d26;backdrop-filter:blur(12px)}.rail-heading{display:none}.page-rail a.rail-item,.page-rail a.rail-item:hover,.page-rail a.rail-item:focus-visible{min-height:49px;flex:none;justify-content:center;gap:5px;padding:5px 3px;border-radius:8px}.rail-number{width:22px;height:22px;font-size:9px}.rail-info{opacity:1;transform:none;flex:0 1 auto;gap:0}.rail-info strong{font-size:10px;white-space:nowrap}.rail-info small,.rail-go,.page-rail img{display:none}.site-footer{padding-bottom:80px}}
+@media(prefers-reduced-motion:reduce){.page-rail,.page-rail *{transition-duration:.01ms!important}}
