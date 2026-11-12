@@ -86,3 +86,17 @@
 
 @media(prefers-reduced-motion:reduce){.hero-frame iframe{display:block!important}.hero-progress i{animation-duration:8s!important}}
 
+
+
+/* Detail pages: video first, explanation and documents below. */
+.showcase-video{max-width:1000px;margin:0 auto}
+.showcase-video .video-embed{box-shadow:0 18px 45px #142b3b24}
+.showcase-description{display:grid;grid-template-columns:1.15fr 1fr;gap:8%;align-items:start;margin:38px auto 60px;padding:35px 0 0;border-top:1px solid var(--line);max-width:1000px}
+.showcase-description .portfolio-copy h2,.showcase-description h3{font-size:clamp(25px,2.5vw,36px);letter-spacing:-.05em;line-height:1.35;margin:12px 0 16px}
+.showcase-description .portfolio-copy>p,.showcase-description>div>p{font-size:14px;color:#4e6476;line-height:1.9}
+.showcase-description .detail-facts{margin:0}
+.showcase-description .detail-facts>p{margin:0}
+.level-showcase-heading{margin-top:0}
+.level-showcase-video{margin-bottom:0}
+.level-showcase-description{margin-bottom:70px}
+@media(max-width:650px){.showcase-description{grid-template-columns:1fr;gap:12px;margin-top:26px;padding-top:25px}.showcase-description .detail-facts{margin-top:0}}
