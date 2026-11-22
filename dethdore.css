@@ -78,3 +78,5 @@
 .dd-rooms-sm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 @media (max-width:850px){.dd-rooms-sm{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:500px){.dd-stats{grid-template-columns:1fr}.dd-steps .dd-shots,.dd-steps .dd-rooms-sm{margin-left:0}}
+
+.dd-shot{width:100%;border:1px solid rgba(11,20,34,.12);border-radius:10px;background:#fff}
