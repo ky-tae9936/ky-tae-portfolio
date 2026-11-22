@@ -214,3 +214,7 @@
 .rail-next b{width:26px;height:26px;background:none;box-shadow:none;border-radius:0;font-size:0;border-left:4px solid #111;border-bottom:4px solid #111;transform:rotate(45deg)}
 .rail-next:hover b,.rail-next:focus-visible b{background:none;border-color:#000;transform:rotate(45deg) translate(-3px,3px)}
 .rail-next b{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff)} /* 어두운 배경 위에서도 보이게 */
+/* 화살표 = 레일 펼치기 버튼 (크고 두껍게) */
+.rail-next{border:0;background:none;padding:10px;cursor:pointer}
+.rail-next b{width:40px;height:40px;border-left-width:8px;border-bottom-width:8px;border-radius:2px}
+.page-rail:hover+.rail-next b,.page-rail:focus-within+.rail-next b{transform:rotate(225deg)}
