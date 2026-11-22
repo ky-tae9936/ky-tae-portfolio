@@ -58,3 +58,23 @@
 .dd-more>summary:hover{background:rgba(11,20,34,.06)}
 .dd-more[open]{padding-bottom:24px}
 .dd-more>.dd-block{padding:0 24px}
+
+/* AI 작업 내역 : 5단계 흐름도 (대표 2026-11-22) */
+.dd-more>.dd-stats,.dd-more>.dd-steps,.dd-more>.dd-tools{margin-left:24px;margin-right:24px}
+.dd-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.dd-stats div{background:#0b1422;color:#fff;border-radius:12px;padding:16px;text-align:center}
+.dd-stats b{display:block;font-size:1.6rem}
+.dd-stats span{font-size:.85rem;opacity:.75}
+.dd-steps{list-style:none;padding:0;margin:28px 0;display:flex;flex-direction:column}
+.dd-steps>li{position:relative;padding:0 0 28px 0}
+.dd-steps>li:not(:last-child)::after{content:"";position:absolute;left:19px;top:44px;bottom:0;border-left:2px dashed rgba(11,20,34,.25)}
+.dd-step-head{display:flex;gap:14px;align-items:flex-start}
+.dd-step-head em{flex:none;width:40px;height:40px;border-radius:50%;background:#0b1422;color:#fff;font-style:normal;font-weight:700;display:grid;place-items:center}
+.dd-step-head b{display:block;font-size:1.05rem}
+.dd-step-head span{opacity:.75;font-size:.92rem}
+.dd-steps .dd-shots,.dd-steps .dd-rooms-sm{margin:12px 0 0 54px}
+.dd-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.dd-shots .dd-ph{min-height:120px}
+.dd-rooms-sm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:850px){.dd-rooms-sm{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:500px){.dd-stats{grid-template-columns:1fr}.dd-steps .dd-shots,.dd-steps .dd-rooms-sm{margin-left:0}}
