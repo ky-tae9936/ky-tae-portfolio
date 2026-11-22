@@ -46,3 +46,15 @@
 /* ai.html 안 03번 항목 */
 .dd-in-ai{margin-bottom:72px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
 .dd-in-ai>h3{margin:8px 0 32px}
+
+/* AI 작업 내역 접기 상자 (대표 2026-11-22 : 칸을 너무 차지) */
+.dd-more{margin-top:28px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.03)}
+.dd-more>summary{cursor:pointer;list-style:none;padding:20px 24px;display:flex;flex-direction:column;gap:4px}
+.dd-more>summary::-webkit-details-marker{display:none}
+.dd-more>summary span{font-weight:700;font-size:1.05rem}
+.dd-more>summary span::after{content:" ▾";opacity:.7}
+.dd-more[open]>summary span::after{content:" ▴"}
+.dd-more>summary small{opacity:.65}
+.dd-more>summary:hover{background:rgba(255,255,255,.05)}
+.dd-more[open]{padding-bottom:24px}
+.dd-more>.dd-block{padding:0 24px}
