@@ -201,3 +201,11 @@
 .gstar-copy>p{font-size:14px;line-height:2}
 @media(max-width:800px){.team-process ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.team-process li:nth-child(3){padding-left:0;border-left:0}}
 @media(max-width:650px){.team-process{padding:18px 16px}.team-process ol{grid-template-columns:1fr;gap:13px}.team-process li,.team-process li:nth-child(3){padding:0 0 0 13px;border-left:1px solid #c9d8e1}.team-process li small{font-size:11px}}
+
+/* 우측 레일 밖 : 다음 작업 화살표 (레일 왼쪽, 세로 가운데) */
+.rail-next{position:fixed;z-index:41;top:50%;right:96px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:#1f7fb0;font-weight:800;transition:right .35s cubic-bezier(.2,.75,.2,1)}
+.rail-next b{width:56px;height:56px;display:grid;place-items:center;border-radius:50%;background:#1f7fb0;color:#fff;font-size:26px;line-height:1;box-shadow:0 10px 24px #1f7fb066;transition:background .2s,transform .2s}
+.rail-next small{font-size:11px;white-space:nowrap;background:#ffffffe6;padding:2px 8px;border-radius:10px}
+.rail-next:hover b,.rail-next:focus-visible b{background:#155f86;transform:translateX(4px)}
+.page-rail:hover+.rail-next,.page-rail:focus-within+.rail-next{right:348px}
+@media(max-width:750px){.rail-next{display:none}}

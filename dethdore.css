@@ -83,3 +83,32 @@
 .dd-doc{background:#0b1422;color:#e6edf6;border-radius:10px;padding:14px 16px;overflow-x:auto}
 .dd-doc b{display:block;font-size:.85rem;opacity:.7;margin-bottom:8px}
 .dd-doc pre{margin:0;font-size:.8rem;line-height:1.55;white-space:pre;font-family:ui-monospace,Consolas,monospace}
+/* 작업 결과물 · 클릭 확대 */
+.dd-fig{margin:0 0 30px}
+.dd-fig figcaption,.dd-icons figcaption{font-size:12px;color:#647386;margin-top:8px}
+.dd-sub{font-size:19px;margin:0 0 6px}
+.dd-note{font-size:14px;color:#536b7e;margin:0 0 14px}
+.dd-icons{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.dd-icons figure{margin:0;text-align:center}
+.dd-icons img{width:100%;aspect-ratio:1;border-radius:10px;display:block}
+.dd-zoom,.dd-shot{cursor:zoom-in}
+.dd-lightbox{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh}
+.dd-lightbox::backdrop{background:rgba(5,12,22,.88)}
+.dd-lightbox img{min-width:min(512px,90vw);max-width:94vw;max-height:94vh;display:block;cursor:zoom-out}
+@media(max-width:750px){.dd-icons{grid-template-columns:repeat(4,1fr)}}
+/* 2차 보완 : 작업 내역 안 배치 */
+.dd-steps .dd-rooms-sm{width:auto;box-sizing:border-box}
+.dd-rooms-sm .dd-node{min-width:0;text-align:left}
+.dd-rooms-sm ul{margin:8px 0 0;padding-left:16px;font-size:12px;color:#536b7e;line-height:1.7}
+.dd-sub-label{margin:18px 0 8px 54px;font-size:13px;font-weight:700;color:#1a577d}
+.dd-steps .dd-icons{margin-left:54px;grid-template-columns:repeat(7,minmax(0,72px));gap:8px}
+.dd-steps .dd-icons figcaption{font-size:11px;margin-top:4px}
+.dd-crops{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 10px 54px}
+.dd-crop{margin:0}
+.dd-crop-img{display:block;width:100%;aspect-ratio:4/3;border:1px solid rgba(11,20,34,.12);border-radius:10px;background:#fff url(dethdore-userflow.webp) no-repeat;background-size:300% auto;cursor:zoom-in;padding:0}
+.dd-crop figcaption{font-size:12px;color:#647386;margin-top:6px}
+@media(max-width:850px){.dd-crops{grid-template-columns:1fr}.dd-steps .dd-icons{grid-template-columns:repeat(4,minmax(0,72px))}}
+@media(max-width:500px){.dd-crops,.dd-sub-label,.dd-steps .dd-icons{margin-left:0}}
+/* 유저 플로우 : 원본(2000x542)을 가로 3등분해 세로로 크게 */
+.dd-crops{grid-template-columns:1fr}
+.dd-crop-img{aspect-ratio:667/542;background-size:300% 100%}
