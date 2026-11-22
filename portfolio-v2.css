@@ -209,3 +209,8 @@
 .rail-next:hover b,.rail-next:focus-visible b{background:#155f86;transform:translateX(4px)}
 .page-rail:hover+.rail-next,.page-rail:focus-within+.rail-next{right:348px}
 @media(max-width:750px){.rail-next{display:none}}
+/* 다음 작업 화살표 : 검은 꺾쇠(<)만, 원·라벨 없음 */
+.rail-next small{display:none}
+.rail-next b{width:26px;height:26px;background:none;box-shadow:none;border-radius:0;font-size:0;border-left:4px solid #111;border-bottom:4px solid #111;transform:rotate(45deg)}
+.rail-next:hover b,.rail-next:focus-visible b{background:none;border-color:#000;transform:rotate(45deg) translate(-3px,3px)}
+.rail-next b{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff)} /* 어두운 배경 위에서도 보이게 */
