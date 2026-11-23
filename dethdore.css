@@ -112,3 +112,5 @@
 /* 유저 플로우 : 원본(2000x542)을 가로 3등분해 세로로 크게 */
 .dd-crops{grid-template-columns:1fr}
 .dd-crop-img{aspect-ratio:667/542;background-size:300% 100%}
+
+.dd-more{border:0;background:#f3f7fa}.dd-more>summary{background:#132a40;color:#fff;border-radius:14px;padding:22px 26px;transition:background .2s}.dd-more>summary:hover{background:#1d4262}.dd-more[open]>summary{border-radius:14px 14px 0 0;margin-bottom:24px}.dd-more>summary span{font-size:1.12rem}.dd-more>summary span::after{color:#8ccbeb;opacity:1}.dd-more>summary small{opacity:1;color:#b9d3e6}
