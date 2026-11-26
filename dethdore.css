@@ -135,20 +135,20 @@
 @media(max-width:850px){.dd-steps .dd-icons{grid-template-columns:repeat(4,minmax(0,72px))}}
 @media(max-width:500px){.dd-mf,.dd-sub-label,.dd-steps .dd-icons{margin-left:0}.dd-mf{grid-template-columns:1fr}}
 
-/* 작업 내역 펼치기 버튼 : 눈에 띄게 (대표 2026-11-26) */
-.dd-more{border:0;background:#f3f7fa}
-.dd-more>summary{position:relative;background:linear-gradient(110deg,#0d1e31 0%,#1a4f74 100%);color:#fff;border-radius:14px;padding:24px 190px 24px 28px;border-left:6px solid #f2b24b;box-shadow:0 10px 26px rgba(11,20,34,.22);transition:transform .2s,box-shadow .2s}
-.dd-more>summary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(11,20,34,.3)}
-.dd-more>summary:focus-visible{outline:3px solid #f2b24b;outline-offset:3px}
-.dd-more[open]>summary{border-radius:14px 14px 0 0;margin-bottom:24px;transform:none}
-.dd-more>summary span{font-size:1.3rem;font-weight:800}
+/* 작업 내역 펼치기 버튼 : 차분하게 강조 + 영상 쪽으로 붙임 (대표 2026-11-26) */
+#dd-game{padding-bottom:28px}
+.dd-more{margin-top:0;border:0;background:#f3f7fa}
+.dd-more>summary{position:relative;background:#132a40;color:#fff;border-radius:14px;padding:22px 170px 22px 26px;transition:background .2s}
+.dd-more>summary:hover{background:#1d4262}
+.dd-more>summary:focus-visible{outline:3px solid #8ccbeb;outline-offset:3px}
+.dd-more[open]>summary{border-radius:14px 14px 0 0;margin-bottom:24px}
+.dd-more>summary span{font-size:1.15rem;font-weight:800}
 .dd-more>summary span::after,.dd-more[open]>summary span::after{content:none}
-.dd-more>summary small{opacity:1;color:#cfe2ef;font-size:.92rem}
-.dd-more>summary::after{content:"펼쳐 보기  ▾";position:absolute;right:26px;top:50%;transform:translateY(-50%);background:#f2b24b;color:#0d1e31;font-weight:800;font-size:14px;padding:10px 18px;border-radius:999px;white-space:pre;animation:dd-nudge 1.8s ease-in-out infinite}
-.dd-more[open]>summary::after{content:"접기  ▴";background:#fff;animation:none}
-@keyframes dd-nudge{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% + 4px))}}
-@media(prefers-reduced-motion:reduce){.dd-more>summary::after{animation:none}}
-@media(max-width:600px){.dd-more>summary{padding:20px 18px 70px}.dd-more>summary::after{top:auto;bottom:18px;left:18px;right:auto;transform:none;animation:none}}
+.dd-more>summary small{opacity:1;color:#b9d3e6}
+.dd-more>summary::after{content:"펼쳐 보기  ▾";position:absolute;right:24px;top:50%;transform:translateY(-50%);border:1px solid rgba(140,203,235,.6);color:#8ccbeb;font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;white-space:pre;transition:background .2s,color .2s}
+.dd-more>summary:hover::after{background:#8ccbeb;color:#0d1e31}
+.dd-more[open]>summary::after{content:"접기  ▴"}
+@media(max-width:600px){.dd-more>summary{padding:20px 18px 64px}.dd-more>summary::after{top:auto;bottom:16px;left:18px;right:auto;transform:none}}
 .dd-hud{margin-left:54px;display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:12px;align-items:start}
 .dd-hud figure{margin:0}
 .dd-hud img{width:100%;border-radius:10px;display:block}
