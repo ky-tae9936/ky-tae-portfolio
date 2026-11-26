@@ -156,3 +156,17 @@
 .dd-hud figcaption{font-size:11px;color:#647386;margin-top:4px}
 @media(max-width:850px){.dd-hud{grid-template-columns:1fr}}
 @media(max-width:500px){.dd-hud{margin-left:0}}
+
+/* 기능 명세 : 탭으로 한 장씩 크게 (대표 2026-11-26) */
+.dd-tabs{margin-left:54px;max-width:900px}
+.dd-tabs>input{position:absolute;opacity:0;pointer-events:none}
+.dd-tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.dd-tab-bar label{cursor:pointer;font-size:13px;font-weight:700;color:#1a577d;background:#fff;border:1px solid rgba(11,20,34,.14);border-radius:999px;padding:7px 14px}
+.dd-tab-bar label:hover{border-color:#339acb}
+.dd-tabs .dd-mf-wide{margin-left:0;max-width:none}
+.dd-tabs .dd-mf-wide figure{display:none}
+.dd-tabs .dd-mf-wide figcaption{display:none}
+#mfs1:checked~.dd-mf figure:nth-child(1),#mfs2:checked~.dd-mf figure:nth-child(2),#mfs3:checked~.dd-mf figure:nth-child(3),#mfs4:checked~.dd-mf figure:nth-child(4){display:block}
+#mfs1:checked~.dd-tab-bar label[for=mfs1],#mfs2:checked~.dd-tab-bar label[for=mfs2],#mfs3:checked~.dd-tab-bar label[for=mfs3],#mfs4:checked~.dd-tab-bar label[for=mfs4]{background:#132a40;border-color:#132a40;color:#fff}
+#mfs1:focus-visible~.dd-tab-bar label[for=mfs1],#mfs2:focus-visible~.dd-tab-bar label[for=mfs2],#mfs3:focus-visible~.dd-tab-bar label[for=mfs3],#mfs4:focus-visible~.dd-tab-bar label[for=mfs4]{outline:3px solid #8ccbeb;outline-offset:2px}
+@media(max-width:500px){.dd-tabs{margin-left:0}}
