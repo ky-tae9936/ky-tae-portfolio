@@ -105,7 +105,6 @@
 .dd-steps .dd-icons figcaption{font-size:11px;margin-top:4px}
 .dd-mf{margin:0 0 4px 54px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
 .dd-mf figure{margin:0}
-.dd-mf-wide{grid-template-columns:1fr;max-width:900px}
 .dd-mf img{width:100%;border:1px solid rgba(11,20,34,.12);border-radius:10px;background:#fff;display:block}
 .dd-mf figcaption{font-size:12px;color:#647386;margin-top:6px}
 /* AI 활용 구조도 : 역할 관계 (대표 2026-11-26) */
@@ -157,19 +156,9 @@
 @media(max-width:850px){.dd-hud{grid-template-columns:1fr}}
 @media(max-width:500px){.dd-hud{margin-left:0}}
 
-/* 기능 명세 : 탭으로 한 장씩 크게 (대표 2026-11-26) */
-.dd-tabs{margin-left:54px;max-width:900px}
-.dd-tabs>input{position:absolute;opacity:0;pointer-events:none}
-.dd-tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.dd-tab-bar label{cursor:pointer;font-size:13px;font-weight:700;color:#1a577d;background:#fff;border:1px solid rgba(11,20,34,.14);border-radius:999px;padding:7px 14px}
-.dd-tab-bar label:hover{border-color:#339acb}
-.dd-tabs .dd-mf-wide{margin-left:0;max-width:none}
-.dd-tabs .dd-mf-wide figure{display:none}
-.dd-tabs .dd-mf-wide figcaption{display:none}
-#mfs1:checked~.dd-mf figure:nth-child(1),#mfs2:checked~.dd-mf figure:nth-child(2),#mfs3:checked~.dd-mf figure:nth-child(3),#mfs4:checked~.dd-mf figure:nth-child(4){display:block}
-#mfs1:checked~.dd-tab-bar label[for=mfs1],#mfs2:checked~.dd-tab-bar label[for=mfs2],#mfs3:checked~.dd-tab-bar label[for=mfs3],#mfs4:checked~.dd-tab-bar label[for=mfs4]{background:#132a40;border-color:#132a40;color:#fff}
-#mfs1:focus-visible~.dd-tab-bar label[for=mfs1],#mfs2:focus-visible~.dd-tab-bar label[for=mfs2],#mfs3:focus-visible~.dd-tab-bar label[for=mfs3],#mfs4:focus-visible~.dd-tab-bar label[for=mfs4]{outline:3px solid #8ccbeb;outline-offset:2px}
-@media(max-width:500px){.dd-tabs{margin-left:0}}
+/* 기능 명세·유저 플로우 : 2x2 축소 + 클릭 확대 (대표 2026-11-26) */
+.dd-mf img{transition:border-color .2s,box-shadow .2s,transform .2s}
+.dd-mf img:hover{border-color:#339acb;box-shadow:0 8px 20px rgba(11,20,34,.15);transform:translateY(-2px)}
 .dd-kit-one{grid-template-columns:minmax(0,380px);justify-content:center}
 .dd-tier:not(.human)>small{color:#339acb}
 .dd-tier:not(.human) .dd-kit div{background:#f3f7fa;border:1px solid rgba(11,20,34,.1);color:#536b7e}
