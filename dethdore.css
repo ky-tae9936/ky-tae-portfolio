@@ -170,3 +170,7 @@
 #mfs1:checked~.dd-tab-bar label[for=mfs1],#mfs2:checked~.dd-tab-bar label[for=mfs2],#mfs3:checked~.dd-tab-bar label[for=mfs3],#mfs4:checked~.dd-tab-bar label[for=mfs4]{background:#132a40;border-color:#132a40;color:#fff}
 #mfs1:focus-visible~.dd-tab-bar label[for=mfs1],#mfs2:focus-visible~.dd-tab-bar label[for=mfs2],#mfs3:focus-visible~.dd-tab-bar label[for=mfs3],#mfs4:focus-visible~.dd-tab-bar label[for=mfs4]{outline:3px solid #8ccbeb;outline-offset:2px}
 @media(max-width:500px){.dd-tabs{margin-left:0}}
+.dd-kit-one{grid-template-columns:minmax(0,380px);justify-content:center}
+.dd-tier:not(.human)>small{color:#339acb}
+.dd-tier:not(.human) .dd-kit div{background:#f3f7fa;border:1px solid rgba(11,20,34,.1);color:#536b7e}
+.dd-tier:not(.human) .dd-kit strong{color:#0b1422}
