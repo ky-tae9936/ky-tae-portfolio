@@ -44,7 +44,8 @@
 @media(max-width:500px){.dd-flow,.dd-tools{grid-template-columns:1fr}}
 
 /* ai.html 안 03번 항목 */
-.dd-in-ai{margin-bottom:72px;padding-bottom:48px;border-bottom:1px solid rgba(11,20,34,.12)}
+/* 구분선은 다음 작업(.portfolio-row)의 윗선 하나만 사용 */
+.dd-in-ai{padding-bottom:12px}
 .dd-in-ai>h3{margin:8px 0 32px}
 
 /* AI 작업 내역 접기 상자 (대표 2026-11-22 : 칸을 너무 차지) */
