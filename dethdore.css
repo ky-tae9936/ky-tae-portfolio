@@ -105,6 +105,7 @@
 .dd-steps .dd-icons figcaption{font-size:11px;margin-top:4px}
 .dd-mf{margin:0 0 4px 54px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
 .dd-mf figure{margin:0}
+.dd-mf-wide{grid-template-columns:1fr;max-width:900px}
 .dd-mf img{width:100%;border:1px solid rgba(11,20,34,.12);border-radius:10px;background:#fff;display:block}
 .dd-mf figcaption{font-size:12px;color:#647386;margin-top:6px}
 /* AI 활용 구조도 : 역할 관계 (대표 2026-11-26) */
