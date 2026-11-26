@@ -107,10 +107,31 @@
 .dd-mf figure{margin:0}
 .dd-mf img{width:100%;border:1px solid rgba(11,20,34,.12);border-radius:10px;background:#fff;display:block}
 .dd-mf figcaption{font-size:12px;color:#647386;margin-top:6px}
-.dd-org .dd-node{width:min(640px,100%);border-radius:10px;padding:14px 20px}
-.dd-org .dd-node b{font-size:15px;margin-bottom:3px}
-.dd-org .dd-node span{font-size:13px}
-.dd-org .dd-node.human b::after{content:"사람";display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#1d4262;color:#8ccbeb;font-size:11px;font-weight:700;vertical-align:middle}
+/* AI 활용 구조도 : 역할 관계 (대표 2026-11-26) */
+.dd-map{margin:8px 24px 28px;display:flex;flex-direction:column;align-items:center}
+.dd-map-title{margin:0;font-size:1.05rem;font-weight:800;color:#0b1422}
+.dd-map-note{margin:4px 0 18px;font-size:13px;color:#647386;text-align:center}
+.dd-tier{position:relative;width:min(760px,100%);box-sizing:border-box;background:#fff;border:1px solid rgba(11,20,34,.14);border-radius:12px;padding:18px 22px;text-align:center}
+.dd-tier>b{display:block;font-size:16px;letter-spacing:-.03em;color:#0b1422}
+.dd-tier>span{display:block;font-size:13px;color:#536b7e;line-height:1.7;margin-top:4px}
+.dd-tier>small{display:block;margin:14px 0 6px;font-size:11px;font-weight:700;letter-spacing:.08em;color:#8ccbeb}
+.dd-tag{position:absolute;top:12px;left:14px;font-style:normal;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;background:#e9f3f8;color:#1a577d}
+.dd-tier.human{background:#0d1e31;border-color:#0d1e31}
+.dd-tier.human>b{color:#f7fbff}.dd-tier.human>span{color:#a9c4d6}
+.dd-tier.human .dd-tag{background:#f2b24b;color:#0d1e31}
+.dd-kit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.dd-kit div{background:#1d4262;border-radius:8px;padding:10px;font-size:12px;color:#cfe2ef;line-height:1.5}
+.dd-kit strong{display:block;color:#fff;font-size:13px;margin-bottom:2px}
+.dd-link{display:flex;gap:28px;justify-content:center;padding:8px 0;font-size:12px;font-weight:700;color:#1a577d}
+.dd-link span:last-child{color:#647386}
+.dd-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:12px}
+.dd-pair div{background:#f3f7fa;border:1px solid rgba(11,20,34,.1);border-radius:8px;padding:12px;font-size:12px;color:#536b7e;line-height:1.6}
+.dd-pair strong{display:block;color:#0b1422;font-size:13px;margin-bottom:2px}
+.dd-pair em{font-style:normal;font-size:22px;color:#339acb;line-height:1}
+.dd-pair em small{display:block;font-size:11px;font-weight:700;color:#1a577d;margin-top:2px}
+.dd-tier>.dd-pair+span{margin-top:10px}
+.dd-loop{margin:14px 0 0;width:min(760px,100%);box-sizing:border-box;border:1px dashed #f2b24b;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;color:#8a5a0b;background:#fff8ea;text-align:center}
+@media(max-width:600px){.dd-map{margin-left:0;margin-right:0}.dd-kit{grid-template-columns:1fr}.dd-pair{grid-template-columns:1fr}.dd-tier{padding:34px 14px 16px}.dd-link{gap:14px}}
 @media(max-width:850px){.dd-steps .dd-icons{grid-template-columns:repeat(4,minmax(0,72px))}}
 @media(max-width:500px){.dd-mf,.dd-sub-label,.dd-steps .dd-icons{margin-left:0}.dd-mf{grid-template-columns:1fr}}
 
